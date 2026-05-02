@@ -1,0 +1,17 @@
+{
+  "name": "chunav-mitra",
+  "version": "1.0.0",
+  "description": "Indian Election Assistant powered by Gemini API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.11.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.2.0"
+  }
+}
