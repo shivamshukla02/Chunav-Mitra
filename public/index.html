@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chunav Mitra - Indian Election Assistant</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Chunav Mitra is an AI assistant powered by Google to help you understand the Indian election process safely and easily.">
+</head>
+<body>
+    <main class="chat-container">
+        <header>
+            <h1>🙏 Chunav Mitra</h1>
+            <p>Your unbiased guide to the Indian election process</p>
+        </header>
+        
+        <div id="chat-history" aria-live="polite" role="log">
+            <div class="message bot-message">
+                <div class="message-content">
+                    Namaste! 🙏 I am Chunav Mitra, your guide to the Indian election process. Every vote counts, and I am here to make your democratic journey smooth and easy! 🇮🇳<br><br>
+                    How can I help you today? Please reply with a number or ask your question directly:<br>
+                    1️⃣ Apply for a new Voter ID<br>
+                    2️⃣ Check my name in the Voter List<br>
+                    3️⃣ What documents do I need on Voting Day?<br>
+                    4️⃣ How to use the EVM & VVPAT<br>
+                    5️⃣ Other (Ask me anything!)
+                </div>
+            </div>
+        </div>
+
+        <form id="chat-form">
+            <label for="user-input" class="sr-only">Type your election query</label>
+            <input type="text" id="user-input" placeholder="Type your query (e.g., 'How to use EVM?')" required autocomplete="off">
+            <button type="submit" aria-label="Send Message">Send</button>
+        </form>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
