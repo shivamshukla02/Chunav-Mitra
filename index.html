@@ -5,40 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chunav Mitra - Indian Election Assistant</title>
     <link rel="stylesheet" href="style.css">
-    <meta name="description" content="Chunav Mitra is an AI assistant powered by Google to help you understand the Indian election process safely and easily.">
-    <!-- PWA & Mobile Optimization -->
+    <meta name="description" content="Chunav Mitra is a free, unbiased AI assistant powered by Google Gemini to help Indian citizens understand voter registration, EVM usage, and the election process.">
+    <!-- PWA -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#FF9933">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Chunav Mitra">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Chunav Mitra - Election Friend 🇮🇳">
+    <meta property="og:description" content="Free AI guide for Indian voters. Non-partisan. Powered by Google Gemini.">
+    <meta property="og:type" content="website">
 </head>
 <body>
-    <main class="chat-container">
+    <main class="chat-container" role="main">
         <header>
-            <h1>🙏 Chunav Mitra</h1>
-            <p>Your unbiased guide to the Indian election process</p>
+            <div class="header-top">
+                <h1>🙏 Chunav Mitra</h1>
+                <div class="header-controls">
+                    <button id="lang-toggle" class="lang-btn" aria-label="Switch to Hindi" title="Switch Language">
+                        हिं / EN
+                    </button>
+                    <button id="clear-btn" class="clear-btn" aria-label="Clear conversation" title="Clear Chat">
+                        🗑️
+                    </button>
+                </div>
+            </div>
+            <p id="header-subtitle">Your unbiased guide to the Indian election process</p>
+            <div class="quick-links" aria-label="Quick resource links">
+                <a href="https://voters.eci.gov.in" target="_blank" rel="noopener noreferrer" class="quick-link">🗳️ Voter Portal</a>
+                <a href="tel:1950" class="quick-link">📞 1950 Helpline</a>
+                <a href="https://nvsp.in" target="_blank" rel="noopener noreferrer" class="quick-link">📋 NVSP</a>
+            </div>
         </header>
-        
-        <div id="chat-history" aria-live="polite" role="log">
+
+        <div id="chat-history" aria-live="polite" role="log" aria-label="Chat conversation">
             <div class="message bot-message">
+                <div class="avatar" aria-hidden="true">🤖</div>
                 <div class="message-content">
-                    Namaste! 🙏 I am Chunav Mitra, your guide to the Indian election process. Every vote counts, and I am here to make your democratic journey smooth and easy! 🇮🇳<br><br>
-                    How can I help you today? Please reply with a number or ask your question directly:<br>
-                    1️⃣ Apply for a new Voter ID<br>
+                    Namaste! 🙏 I am <strong>Chunav Mitra</strong>, your free and unbiased guide to the Indian election process. Every vote counts, and I'm here to make your democratic journey smooth and easy! 🇮🇳<br><br>
+                    How can I help you today? Reply with a number or ask directly:<br><br>
+                    1️⃣ Apply for a new Voter ID (Form 6)<br>
                     2️⃣ Check my name in the Voter List<br>
-                    3️⃣ What documents do I need on Voting Day?<br>
-                    4️⃣ How to use the EVM & VVPAT<br>
-                    5️⃣ Other (Ask me anything!)
+                    3️⃣ Documents needed on Voting Day<br>
+                    4️⃣ How to use EVM &amp; VVPAT<br>
+                    5️⃣ Find my Polling Booth<br>
+                    6️⃣ Correct errors on my Voter ID<br>
+                    7️⃣ Other — ask me anything!
                 </div>
             </div>
         </div>
 
-        <form id="chat-form">
+        <!-- Typing indicator -->
+        <div id="typing-indicator" class="typing-indicator hidden" aria-hidden="true">
+            <div class="avatar">🤖</div>
+            <div class="typing-dots"><span></span><span></span><span></span></div>
+        </div>
+
+        <!-- Quick reply chips -->
+        <div id="quick-replies" class="quick-replies" role="group" aria-label="Quick reply options">
+            <button class="chip" data-msg="How do I apply for a new Voter ID?">New Voter ID</button>
+            <button class="chip" data-msg="How to check my name in voter list?">Check Voter List</button>
+            <button class="chip" data-msg="What documents do I need on voting day?">Voting Day Docs</button>
+            <button class="chip" data-msg="How to use EVM and VVPAT?">EVM / VVPAT</button>
+            <button class="chip" data-msg="How to find my polling booth?">Find Booth</button>
+        </div>
+
+        <form id="chat-form" novalidate>
             <label for="user-input" class="sr-only">Type your election query</label>
-            <input type="text" id="user-input" placeholder="Type your query (e.g., 'How to use EVM?')" required autocomplete="off">
-            <button type="submit" aria-label="Send Message">Send</button>
+            <input 
+                type="text" 
+                id="user-input" 
+                placeholder="Ask about voting, voter ID, EVM..." 
+                autocomplete="off"
+                maxlength="1000"
+                aria-label="Type your message"
+            >
+            <button type="submit" id="send-btn" aria-label="Send Message">
+                <span class="btn-text">Send</span>
+                <span class="btn-icon" aria-hidden="true">➤</span>
+            </button>
         </form>
+        <p class="disclaimer">Chunav Mitra is non-partisan. Powered by Google Gemini. For official info: <a href="https://eci.gov.in" target="_blank" rel="noopener">eci.gov.in</a></p>
     </main>
+
     <script src="script.js"></script>
 </body>
 </html>
